@@ -7,7 +7,7 @@ from exts import db
 import re
 #自己的模块
 from response import MyResponse
-from blueprints import userbp
+from blueprints import userbp,mallbp,recommendbp,groupbp,communitybp,alibp,authoritybp,pointbp
 
 app = Flask(__name__,template_folder = "./vue/dist", static_folder="./vue/dist",static_url_path="")
 #设置数据库
@@ -58,8 +58,14 @@ def before_request():
             if r:
                 return '请输入规范的参数！'
 
-
 app.register_blueprint(userbp)
+app.register_blueprint(mallbp)
+app.register_blueprint(recommendbp)
+app.register_blueprint(groupbp)
+app.register_blueprint(communitybp)
+app.register_blueprint(alibp)
+app.register_blueprint(authoritybp)
+app.register_blueprint(pointbp)
 
 @app.route('/')
 def index():
